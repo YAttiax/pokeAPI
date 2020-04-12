@@ -13,12 +13,12 @@ request.onload = function() {
         request1.onload = function() {
             let data1 = JSON.parse(this.response);
             console.log(data1)
-            let pokeA = document.createElement("a")
             let pokeDiv = document.createElement("div")
-            pokeDiv.className = "pokeDiv"
+            pokeDiv.classList.add("pokeDiv",data1.types[0].type.name, data1.types[1] ? "s"+ data1.types[1].type.name : "s"+data1.types[0].type.name)
             let pokeImg = document.createElement("img")
             let pokeTitle = document.createElement("h4")
-            document.querySelector("#modals").innerHTML+=`<div class="modal fade" id="${data1.name}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            document.querySelector("#modals").innerHTML+=`
+            <div class="modal fade" id="${data1.name}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -28,8 +28,9 @@ request.onload = function() {
                 </button>
                 </div>
                 <div class="modal-body">
-                    <img src = ${data1.sprites.front_default}>
+                    <a href = "https://pokemon.fandom.com/wiki/${data1.name}" target="_blank"><img src = ${data1.sprites.front_default}></a>
                     <p>Type: ${capitalize(data1.types[0].type.name)}</p>
+                    ${data1.types[1] ? '<p>Seconday Type: '+capitalize(data1.types[1].type.name)+'</p>':''}
                     <p>Base Experience: ${data1.base_experience}</p>
                     <span style="margin-right:30px">Height: ${data1.height}</span>
                     
@@ -53,12 +54,11 @@ request.onload = function() {
             pokeTitle.innerHTML = data1.name
             pokeDiv.appendChild(pokeTitle)
             pokeDiv.appendChild(pokeImg)
-            pokeA.appendChild(pokeDiv)
-            pokeA.addEventListener("click",()=>{
+            pokeDiv.addEventListener("click",()=>{
                 $("#"+data1.name).modal()
             })
             pokeImg.src = `https://play.pokemonshowdown.com/sprites/ani/${data1.name}.gif`
-            document.querySelector("#pokelist").appendChild(pokeA)
+            document.querySelector("#pokelist").appendChild(pokeDiv )
         };
         
         request1.send();
@@ -67,6 +67,6 @@ request.onload = function() {
 
 request.send();
 
-function capitalize(input) { 
-    return input[0].toUpperCase() + input.slice(1); 
+function capitalize(input) {
+    return input[0].toUpperCase() + input.slice(1);
 }

@@ -36,3 +36,48 @@ header{
     cursor: pointer;
     transition-duration: .5s;
 }
+.fire{
+    background-color: rgb(209, 156, 156);
+}
+.sfire{
+    border: rgb(128, 57, 57) solid 10px;
+}
+.fire:hover{
+    background-color: rgb(180, 125, 125);
+}
+.flying{
+    background-color: rgb(202, 224, 228);
+}
+.poison{
+    background-color: rgb(180, 218, 196);
+}
+.poison:hover{
+    background-color: rgb(134, 182, 154);
+}
+.spoison{
+    border: rgb(22, 172, 84) solid 10px;
+}
+.sgrass{
+    border: rgb(58, 124, 86) solid 10px;
+}
+.water{
+    background-color: rgb(92, 187, 204);
+}
+.snormal{
+    border: rgb(124, 84, 58) solid 10px;
+}
+.normal{
+    background-color: rgb(175, 157, 133);
+}
+.grass{
+    background-color: rgb(186, 221, 176);
+}
+.sbug{
+    border: rgb(99, 109, 55) solid 10px;
+}
+.normal:hover{
+    background-color: rgb(219, 200, 174);
+}
+.water:hover{
+    background-color: rgb(163, 206, 214);
+}
